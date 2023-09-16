@@ -105,12 +105,15 @@ class PS(object):
         # Hint: You can use np.linalg.lstsq(A, b) to solve Ax = b
 
         # self.N = ???
+        self.N, residuals, rank, s = np.linalg.lstsq(self.L.T, self.M.T, rcond=None)
+        self.N = self.N.T
 
         # Step 2: We need to normalize the normal vectors as the norm of the normal vectors should be 1
         # Hint: You can use function normalize from sklearn.preprocessing
 
         # self.N = ???
-
+        # 归一化法线向量
+        self.N = normalize(self.N, axis=1, norm='l2')
 
         #############################################
 
